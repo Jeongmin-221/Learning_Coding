@@ -33,7 +33,7 @@ def upload_to_azure(title, content, news_url, img_link):
 
     except Exception as e:
         print(f"DB 에러 발생: {e}")
-        conn.rollback()  # 에러 나면 중간에 저장된 것들 취소 (원자성 유지)
+        conn.rollback()
     finally:
         conn.close()
 
@@ -122,7 +122,7 @@ for i in range(count):
         upload_to_azure(title, content, link, img_link)
 
     except Exception as e:
-        print('DB 업로드 중 에러 발생:', e)
+        print('에러 발생:', e)
         input()
 
     
